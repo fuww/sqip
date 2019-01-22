@@ -29,16 +29,6 @@ describe('cli api', () => {
       })
       .end(cb)
   })
-  test('no output file will print the result to stdout', cb => {
-    nixt()
-      .run(`${cliCmd} --input ${inputFile}`)
-      .code(0)
-      // RegEx based on https://stackoverflow.com/a/475217/2315062
-      .stdout(
-        /<img width="1024" height="640" src="[^"]+beach.jpg" alt="Add descriptive alt text" style="background-size: cover; background-image: url\(data:image\/svg\+xml;base64,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?\);">/
-      )
-      .end(cb)
-  })
 
   test('-o save result to file', cb => {
     const outputFile = resolve(

@@ -13,6 +13,5 @@ Object {
     "height": 768,
     "width": 1024,
   },
-  "svgBase64Encoded": "base64EncodedSVG",
 }
 `;

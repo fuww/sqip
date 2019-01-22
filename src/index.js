@@ -20,11 +20,7 @@ import path from 'path'
 
 import fs from 'fs-extra'
 
-const {
-  encodeBase64,
-  getDimensions,
-  printFinalResult
-} = require('./utils/helpers')
+const { getDimensions } = require('./utils/helpers')
 const { checkForPrimitive, runPrimitive } = require('./utils/primitive')
 const { runSVGO, prepareSVG, applyBlurFilter } = require('./utils/svg')
 
@@ -79,16 +75,11 @@ export default async function sqip(options) {
   // Optimize SVG
   const finalSvg = await runSVGO(blurredSVG)
 
-  // Encode SVG
-  const svgBase64Encoded = encodeBase64(finalSvg.data)
-
   // Write to disk or output result
   if (config.output) {
     const outputPath = path.resolve(config.output)
     await fs.writeFile(outputPath, finalSvg.data)
-  } else {
-    printFinalResult(imgDimensions, inputPath, svgBase64Encoded)
   }
 
-  return { finalSvg, svgBase64Encoded, imgDimensions }
+  return { finalSvg, imgDimensions }
 }
