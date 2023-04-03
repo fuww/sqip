@@ -33,7 +33,7 @@
     "dependencies": {
         "argv": "0.0.2",
         "image-size": "^0.6.1",
-        "svgo": "^0.7.2",
+        "svgo": "^3.0.2",
         "xmldom": "^0.1.27"
     },
     "repository": {
